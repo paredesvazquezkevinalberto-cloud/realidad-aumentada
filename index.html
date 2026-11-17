@@ -6,28 +6,38 @@
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
 </head>
-
 <body style="margin:0; overflow:hidden;">
 
   <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
-    <a-assets>
-      <a-asset-item id="miModelo" src="modelo.glb"></a-asset-item>
+    <a-assets timeout="10000">
+      <a-asset-item
+        id="miModelo"
+        src="modelo.glb">
+      </a-asset-item>
     </a-assets>
 
     <a-marker preset="hiro">
 
+      <a-box
+        position="0 0.15 0"
+        width="0.3"
+        height="0.3"
+        depth="0.3"
+        color="#4CAF50">
+      </a-box>
+
       <a-entity
         gltf-model="#miModelo"
-        scale="0.3 0.3 0.3"
-        position="0 0.1 0">
+        position="0 0.3 0"
+        scale="0.3 0.3 0.3">
       </a-entity>
 
       <a-text
-        value="¡Mi primera AR!"
-        align="center"
-        color="#FFFFFF"
+        value="Mi primera AR"
         position="0 0.8 0"
+        align="center"
+        color="#FF0000"
         scale="0.8 0.8 0.8"
         side="double">
       </a-text>
@@ -36,12 +46,12 @@
 
     <a-marker preset="kanji">
 
-      <a-box
+      <a-cylinder
         position="0 0.25 0"
-        rotation="0 45 0"
-        color="#2196F3"
-        scale="0.5 0.5 0.5">
-      </a-box>
+        radius="0.2"
+        height="0.5"
+        color="#2196F3">
+      </a-cylinder>
 
     </a-marker>
 
