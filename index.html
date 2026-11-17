@@ -1,156 +1,30 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html>
 <head>
   <meta charset="utf-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
-  <title>Práctica 1 - Realidad Aumentada</title>
-
   <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
-
-  <style>
-    body {
-      margin: 0;
-      overflow: hidden;
-    }
-
-    .controles {
-      position: fixed;
-      bottom: 20px;
-      left: 0;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      z-index: 9999;
-    }
-
-    button {
-      padding: 12px;
-      background: #2196F3;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 14px;
-    }
-  </style>
 </head>
+<body style="margin:0; overflow:hidden;">
 
-<body>
-
-  <a-scene embedded
-    arjs="sourceType: webcam; debugUIEnabled: false;">
+  <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
 
     <a-marker preset="hiro">
 
-      <a-entity
-        id="figura"
-        position="0 0 0"
+      <a-box
+        position="0 0.25 0"
         rotation="0 45 0"
-        scale="1 1 1"
-        animation="property: rotation;
-                   to: 0 405 0;
-                   dur: 4000;
-                   loop: true;
-                   easing: linear">
-
-        <a-box
-          id="cubo"
-          position="0 0.5 0"
-          color="#4CAF50"
-          visible="true">
-        </a-box>
-
-        <a-sphere
-          id="esfera"
-          position="0 0.5 0"
-          radius="0.5"
-          color="#E91E63"
-          visible="false">
-        </a-sphere>
-
-        <a-cylinder
-          id="cilindro"
-          position="0 0.5 0"
-          radius="0.4"
-          height="1"
-          color="#FF9800"
-          visible="false">
-        </a-cylinder>
-
-      </a-entity>
+        color="#E91E63"
+        scale="0.5 0.5 0.5"
+        animation="property: rotation; to: 0 405 0; dur: 4000; loop: true; easing: linear">
+      </a-box>
 
     </a-marker>
 
     <a-entity camera></a-entity>
 
   </a-scene>
-
-  <div class="controles">
-    <button onclick="cambiarFigura('cubo')">
-      Cubo
-    </button>
-
-    <button onclick="cambiarFigura('esfera')">
-      Esfera
-    </button>
-
-    <button onclick="cambiarFigura('cilindro')">
-      Cilindro
-    </button>
-
-    <button onclick="cambiarColor()">
-      Cambiar color
-    </button>
-
-    <button onclick="cambiarTamano()">
-      Cambiar tamaño
-    </button>
-  </div>
-
-  <script>
-    let colorRosa = false;
-    let tamanoGrande = false;
-
-    function cambiarFigura(tipo) {
-      document.getElementById("cubo")
-        .setAttribute("visible", tipo === "cubo");
-
-      document.getElementById("esfera")
-        .setAttribute("visible", tipo === "esfera");
-
-      document.getElementById("cilindro")
-        .setAttribute("visible", tipo === "cilindro");
-    }
-
-    function cambiarColor() {
-      colorRosa = !colorRosa;
-
-      let color = colorRosa ? "#E91E63" : "#4CAF50";
-
-      document.getElementById("cubo")
-        .setAttribute("color", color);
-
-      document.getElementById("esfera")
-        .setAttribute("color", color);
-
-      document.getElementById("cilindro")
-        .setAttribute("color", color);
-    }
-
-    function cambiarTamano() {
-      tamanoGrande = !tamanoGrande;
-
-      let escala = tamanoGrande ? "2 2 2" : "1 1 1";
-
-      document.getElementById("figura")
-        .setAttribute("scale", escala);
-    }
-  </script>
 
 </body>
 </html>
